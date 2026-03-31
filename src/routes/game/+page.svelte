@@ -9,14 +9,19 @@
 	};
 
 	let ctx;
-	let angle = 0;
+	let bikeAngle = 0;
+	let bikeAngularVelocity = 0;
 	let wheelAngle = 0;
 	let angularVelocity = 0;
 	let x = 200;
 	let y = 575;
+	let points = 0;
+	let highPoint = 0;
 
 	const acceleration = 0.005;
+	const wheelieAcceleration = 0.01;
 	const friction = 0.98;
+	const gravity = 0.0035;
 
 	onMount(() => {
 		const canvas = document.querySelector('#myCanvas');
@@ -127,16 +132,48 @@
 		ctx.fillRect(0, 500, 1000, 200);
 	}
 
+	function score(points, x, y) {
+		ctx.fillStyle = 'rgb(200, 146, 0)';
+		ctx.font = "40px Arial";
+		ctx.fillText(points.toString(), 482, 202);
+		ctx.fillText(points.toString(), 483, 203);
+		ctx.fillStyle = 'rgb(245, 191, 3)';
+		ctx.fillText(points.toString(), 480, 200);
+	};
+
+	function highScore(points, x, y) {
+		ctx.fillStyle = 'rgb(200, 146, 0)';
+		ctx.font = "40px Arial";
+		ctx.fillText('High Score: ' + points.toString(), 18, 48);
+		ctx.fillText('High Score: ' + points.toString(), 17, 47);
+		ctx.fillStyle = 'rgb(245, 191, 3)';
+		ctx.fillText('High Score: ' + points.toString(), 20, 50);
+	};
+
 	function update() {
 		ctx.clearRect(0, 0, 1000, 700);
 
 		ground(ctx);
 
-		if (keys.ArrowLeft) {
-			console.log("Left pressed");
-		};
-		if (keys.ArrowRight) {
-			console.log("Right pressed");
+		if (angularVelocity >= 0.008) {
+			if (keys.ArrowLeft) {
+				console.log("Left pressed");
+				//bikeAngularVelocity -= wheelieAcceleration;
+				if (bikeAngle <= 0 && bikeAngle > -0.9) {
+					bikeAngularVelocity -= wheelieAcceleration * (1*(bikeAngle + 0.9));
+				}else {
+					bikeAngularVelocity -= wheelieAcceleration * -(1*(bikeAngle + 0.9));
+				};
+			};
+			if (keys.ArrowRight) {
+				console.log("Right pressed");
+				//bikeAngularVelocity += wheelieAcceleration;
+				if (bikeAngle <= 0 && bikeAngle > -0.9) {
+					bikeAngularVelocity += wheelieAcceleration * (1*(bikeAngle + 0.9));
+				}else {
+					bikeAngularVelocity += wheelieAcceleration * -(1*(bikeAngle + 0.9));
+				};
+			};
 		};
 		if (keys.ArrowUp) {
 			console.log("Up pressed");
@@ -147,19 +184,55 @@
 			angularVelocity -= acceleration;
 		};
 
-		// apply friction (slows down over time)
 		angularVelocity *= friction;
 
-		// update rotation
+		if (bikeAngle < 0 && bikeAngle > -0.9) {
+   			bikeAngularVelocity += gravity * (bikeAngle + 0.9);
+		}else {
+			bikeAngularVelocity -= gravity * -(bikeAngle + 0.9) * 0.9;
+		};
+
+		if (bikeAngularVelocity <= -0.05) {
+			bikeAngularVelocity = -0.05;
+		};
+
+		bikeAngle += bikeAngularVelocity;
+		console.log(bikeAngularVelocity);
+		bikeAngularVelocity *= 0.99;
+ 
 		wheelAngle += angularVelocity;
 		//console.log(angularVelocity);
+
+		points += Math.round(-bikeAngle + angularVelocity);
 
 		if (angularVelocity <= 0.002) {
 			angularVelocity = 0;
 		};
 
+		if (bikeAngle > 0) {
+			bikeAngle = 0;
+			bikeAngularVelocity = 0;
+
+			if (points > highPoint) {
+				highPoint = points;
+			};
+			points = 0;
+		};
+		if (bikeAngle < -3) {
+			bikeAngle = -3;
+			bikeAngularVelocity = 0;
+			angularVelocity = 0;
+
+			if (points > highPoint) {
+				highPoint = points;
+			};
+			points = 0;
+		};
+
 		wheel(ctx, x, y, wheelAngle);
-		bike(ctx, x, y, angle);
+		bike(ctx, x, y, bikeAngle);
+		score(points, x, y);
+		highScore(highPoint, x, y);
 
 		requestAnimationFrame(update);
 	};
