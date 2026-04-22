@@ -18,7 +18,7 @@
       <img src="/src/lib/assets/textdecoration1.png" alt="textdecoration">
 </section>
 
-<section id="hometext" class="font-bold text-lg">
+<section id="hometext" class="font-bold text-lg mb-32">
 
       <p>There is a particular kind of silence that happens just before a wheelie.</p>
       <br>
