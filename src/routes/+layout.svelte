@@ -1,6 +1,7 @@
 <script>
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
+	import { page } from '$app/stores';
 
 	let { children } = $props();
 </script>
@@ -12,11 +13,16 @@
 		<a href="/home">Balance point</a>
 	</div>
 	<div class="text-white text-right font-bold fontsans text-4xl p-5 place-self-end ml-auto">
-		<a href="/game">game</a>
+		<a href="/game">Game</a>
 	</div>
 </div>
 
-<div class="grid grid-cols-[1fr_60vw_1fr] h-screen">
+<div
+	id="children"
+	class="grid h-screen"
+	class:grid-cols-[auto_minmax(60vw,60vw)_auto]={$page.url.pathname === '/home'}
+	class:grid-cols-[auto_minmax(1000px,60vw)_auto]={$page.url.pathname !== '/home'}
+>
 	<div class="col-start-2 col-end-2 text-white">
 
 		{@render children()}
@@ -24,3 +30,12 @@
 	</div>
 
 </div>
+
+<style>
+
+	@media (max-width: 1600px) {
+		#children {
+			
+		}
+	}
+</style>
