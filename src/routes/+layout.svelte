@@ -8,8 +8,8 @@
 
 <svelte:head><link rel="icon" href={favicon} /></svelte:head>
 
-<div data-sveltekit-preload-data="hover" data-sveltekit-preload-code="viewport" class="flex flex-row ">
-	<div class="text-white text-center font-bold fontsans text-4xl p-5 absolute left-1/2 -translate-x-1/2">
+<div data-sveltekit-preload-data="hover" data-sveltekit-preload-code="viewport" class="flex flex-row">
+	<div class="text-white text-center font-bold fontsans text-4xl p-5 absolute left-1/2 -translate-x-1/2 whitespace-nowrap">
 		<a href="/home">Balance point</a>
 	</div>
 	<div class="text-white text-right font-bold fontsans text-4xl p-5 place-self-end ml-auto">
@@ -23,7 +23,7 @@
 	class:grid-cols-[auto_minmax(60vw,60vw)_auto]={$page.url.pathname === '/home'}
 	class:grid-cols-[auto_minmax(1000px,60vw)_auto]={$page.url.pathname !== '/home'}
 >
-	<div class="col-start-2 col-end-2 text-white">
+	<div style="max-width: 100vw;" class="col-start-2 col-end-2 text-white">
 
 		{@render children()}
 

@@ -28,22 +28,22 @@
 	style="image-rendering: pixelated;"
 ></canvas>
 
-<section style="width:60vw; margin-left: 30vw; margin-right: 30vw;">
-	<section id="errorText" class="text-2xl font-bold mt-32">Game isn't supported on mobile layout</section>
+<div class="max-w-[60vw] mx-auto">
+	<div id="errorText" class="text-2xl font-bold mt-32">Game isn't supported on mobile layout</div>
 
-	<section id="hometext" class="text-lg font-bold mt-32">
-		<section class="text-2xl">Controls:</section>
+	<div class="text-lg font-bold mt-32">
+		<div class="text-2xl">Controls:</div>
 		<p>⬆️ to accelerate</p>
 		<p>⬇️ to brake</p>
 		<p>⬅️ and ➡️ to control bike</p>
-	</section>
+	</div>
 
-	<section id="hometext" class="font-bold text-lg mb-32 mt-32">
+	<div class="font-bold text-lg mb-32 mt-32">
 
 		<p>Balance point is a game about wheelies. The goal is to score as high as possible. Control the bike using arrowkeys, the greater the angle and the higher the speed the more points you gain. Going too far back however results in a crash</p>
 
-	</section>
-</section>
+	</div>
+</div>
 
 <style>
 	canvas {

@@ -1,4 +1,4 @@
-<section id="hero" style="display:flex; width:100%; filter: brightness(100%);">
+<div id="hero" style="display:flex; width:100%; filter: brightness(100%);">
       <video class="w-1/3 h-auto object-cover" autoplay loop muted playsinline>
             <!-- Källa er1ksson på instagram https://www.instagram.com/er1ksson_/ -->
             <source src="/src/lib/assets/43-sec-of-madness.mp4" type="video/mp4">
@@ -11,14 +11,14 @@
             <!-- Källa er1ksson på instagram https://www.instagram.com/er1ksson_/ -->
             <source src="/src/lib/assets/Perfection.mp4" type="video/mp4">
       </video>
-</section>
+</div>
 <p class="text-gray-400">@er1ksson_</p>
 
-<section id="textdecoration" class="w-1/5 m-auto mt-7">
+<div id="textdecoration" class="w-1/5 m-auto mt-7">
       <img src="/src/lib/assets/textdecoration1.png" alt="textdecoration">
-</section>
+</div>
 
-<section id="hometext" class="font-bold text-lg mb-32">
+<div id="hometext" class="font-bold text-lg mb-32">
 
       <p>There is a particular kind of silence that happens just before a wheelie.</p>
       <br>
@@ -62,4 +62,4 @@
       <br>
       <p>Doing a wheelie on a supermoto isn’t just about showing off. It’s about finding that razor-thin edge between control and chaos — and choosing to live there, if only for a moment.</p>
 
-</section>
+</div>
