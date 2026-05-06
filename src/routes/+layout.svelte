@@ -10,10 +10,10 @@
 
 <div data-sveltekit-preload-data="hover" data-sveltekit-preload-code="viewport" class="flex flex-row">
 	<div class="text-white text-center font-bold fontsans text-4xl p-5 absolute left-1/2 -translate-x-1/2 whitespace-nowrap">
-		<a href="/home">Balance point</a>
+		<a href="/home" data-sveltekit-reload>Balance point</a>
 	</div>
 	<div class="text-white text-right font-bold fontsans text-4xl p-5 place-self-end ml-auto">
-		<a href="/game">Game</a>
+		<a href="/game" data-sveltekit-reload>Game</a>
 	</div>
 </div>
 
